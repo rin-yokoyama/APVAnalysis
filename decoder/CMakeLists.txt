@@ -4,6 +4,8 @@ set(LIB_NAME APVDecoder)
 set(LIB_SOURCES
 	source/APV8104Decoder.cpp
 	source/APVDecodeManager.cpp
+	source/APV7110Decoder.cpp
+	source/APVGrapeDecodeManager.cpp
 )
 set(EXE_NAME apv_decoder)
 add_library(${LIB_NAME} ${LIB_SOURCES})

@@ -1,0 +1,19 @@
+# APVAnalysis software for use with 'environment-modules' package:
+#
+set _module_name  [module-info name]
+set is_module_rm  [module-info mode remove]
+set sys        [uname sysname]
+set os         [uname release]
+
+set  version h466
+
+set INSTALL_PATH @CMAKE_INSTALL_PREFIX@
+
+prepend-path PATH               $INSTALL_PATH/bin
+prepend-path LD_LIBRARY_PATH    $INSTALL_PATH/lib
+
+proc ModulesHelp {} {
+  puts stderr "APVAnalysis software ver. ($version)"
+}
+
+module-whatis "APVAnalysis software ver. ($version)"

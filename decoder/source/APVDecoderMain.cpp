@@ -1,6 +1,7 @@
 #include <iostream>
 #include <unistd.h>
 #include "APVDecodeManager.h"
+#include "APVGrapeDecodeManager.h"
 
 /** prints usage **/
 void usage(char *argv0)
@@ -42,10 +43,20 @@ int main(int argc, char **argv)
 			break;
 		}
 	}
-	APVDecodeManager manager(input_file_name, output_file_name);
-	manager.SetBlockSize(10);
-	manager.Init(module_name);
-	manager.Loop();
+	if (module_name == "APV8104" || module_name == "APV8508")
+	{
+		APVDecodeManager manager(input_file_name, output_file_name);
+		manager.SetBlockSize(10);
+		manager.Init(module_name);
+		manager.Loop();
+	}
+	else if (module_name == "APV7110")
+	{
+		APVGrapeDecodeManager manager(input_file_name, output_file_name);
+		manager.SetBlockSize(1024);
+		manager.Init(module_name);
+		manager.Loop();
+	}
 
 	std::cout << "[APVDecoderMain]: Main loop done." << std::endl;
 	return 0;
